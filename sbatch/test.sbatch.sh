@@ -16,10 +16,11 @@ REF=$1
 PREFIX=$2
 DIR=$3
 
-conda activate trimmomatic
+
 
 echo $REF 
 echo $PREFIX
 echo $DIR
 
+conda activate trimmomatic
 conda deactivate
