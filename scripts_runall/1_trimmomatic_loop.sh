@@ -19,6 +19,12 @@ for dir in "$parent_directory"/*; do
     fi
 done
 
+
+rm -rf ./somut
+git clone https://github.com/greymonroe/somut.git
+
+# tests
+
 parent_directory=~/projects/atx_ko/0_raw
 dir=/home/gmonroe/projects/atx_ko/0_raw/WT_1
 dir_name=$(basename "$dir")

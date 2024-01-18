@@ -16,7 +16,10 @@ REF=$1
 PREFIX=$2
 DIR=$3
 
+
 conda activate trimmomatic
+mkdir ${DIR}/2_bam
+
 
 READ1=${DIR}/1_fastq/${PREFIX}_1.trimmed.fastq.gz
 READ2=${DIR}/1_fastq/${PREFIX}_2.trimmed.fastq.gz
