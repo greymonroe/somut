@@ -11,4 +11,4 @@ dir_name=$(basename "$dir")
 echo "Processing: $dir_name"
         
 #READ1=$1, READ2=$2, PREFIX=$3, DIR=$4
-sbatch ./somut/sbatch/1_trimmomatic.sbatch.sh $dir/${dir_name}_L1_1.fq.gz $dir/${dir_name}_L1_2.fq.gz $dir_name ~/projects/atx_ko
+sbatch ./somut/sbatch/1_trimmomatic.sbatch.sh ${dir_name}_L1_1.fq.gz ${dir_name}_L1_2.fq.gz $dir_name ~/projects/atx_ko
