@@ -13,8 +13,6 @@ REF=$1
 PREFIX=$2
 DIR=$3
 
-
-
 echo $REF 
 echo $PREFIX
 echo $DIR
