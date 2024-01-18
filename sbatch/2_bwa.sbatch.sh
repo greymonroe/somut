@@ -16,7 +16,6 @@ REF=$1
 PREFIX=$2
 DIR=$3
 
-
 conda activate trimmomatic
 mkdir ${DIR}/2_bam
 

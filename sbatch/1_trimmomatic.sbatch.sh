@@ -26,3 +26,4 @@ trimmomatic PE -threads 8 -phred33 \
   ${DIR}/1_fastq/${PREFIX}_2.trimmed.fastq.gz ${DIR}/1_fastq/${PREFIX}_2un.trimmed.fastq.gz \
   SLIDINGWINDOW:4:20
 
+conda deactivate

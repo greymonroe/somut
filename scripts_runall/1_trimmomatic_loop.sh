@@ -30,6 +30,8 @@ dir=/home/gmonroe/projects/atx_ko/0_raw/WT_1
 dir_name=$(basename "$dir")
 
         echo "Processing: $dir"
+        sbatch ./somut/sbatch/1_trimmomatic.sbatch.sh $dir/${dir_name}_L1_1.fq.gz $dir/${dir_name}_L1_2.fq.gz $dir_name ~/projects/atx_ko
+
          #REF=$1, PREFIX=$2, DIR=$3
         sbatch ./somut/sbatch/2_bwa.sbatch.sh ~/data/genome/a_thaliana/TAIR10_chr_all.fasta $dir_name ~/projects/atx_ko/0_raw
         
