@@ -14,14 +14,13 @@ READ2=$2
 PREFIX=$3
 DIR=$4
 
-module load trimmomatic/0.39
-
+conda activate trimmomatic
 mkdir ${DIR}/1_fastq
 
 # On Farm, the jar file is located in the $TRIMMOMATIC_HOME variable created
 # when trimmomatic module is loaded.
 # Specify phred33 or phred64 based on sequencing if known. This prevents reader error and improves speed
-java -jar $TRIMMOMATIC_HOME/trimmomatic-0.39.jar PE -threads 8 -phred33 \
+trimmomatic PE -threads 8 -phred33 \
  ${DIR}/$READ1 ${DIR}/$READ2 \
   ${DIR}/1_fastq/${PREFIX}_1.trimmed.fastq.gz ${DIR}/1_fastq/${PREFIX}_1un.trimmed.fastq.gz \
   ${DIR}/1_fastq/${PREFIX}_2.trimmed.fastq.gz ${DIR}/1_fastq/${PREFIX}_2un.trimmed.fastq.gz \

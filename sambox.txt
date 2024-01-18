@@ -1,0 +1,16 @@
+
+
+make a conda environment that can run trimmomatic, samtools, bwa, and strelka2
+
+
+conda create -n somut trimmomatic samtools bwa strelka2
+
+# Create a new environment
+conda create -n trimmomatic trimmomatic
+# Activate the environment
+conda activate somut
+# Install each package individually
+#conda install trimmomatic
+conda install samtools
+conda install bwa
+conda install strelka2
