@@ -14,3 +14,7 @@ conda activate somut
 conda install samtools
 conda install bwa
 conda install strelka2
+
+
+conda create -n strelka2 python=3.7
+conda activate strelka2

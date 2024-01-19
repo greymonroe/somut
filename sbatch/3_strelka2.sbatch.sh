@@ -16,6 +16,7 @@ DIR=$4
 
 module load strelka/2.9.10
 source activate strelka-2.9.10
+configureStrelkaSomaticWorkflow.py
 
 mkdir ${DIR}/3_strelka
 mkdir ${DIR}/3_strelka/${TUMOR}
