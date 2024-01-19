@@ -1,6 +1,6 @@
 #!/bin/bash -l
-#SBATCH -o /home/gmonroe/slurm-log/%j-stdout.txt
-#SBATCH -e /home/gmonroe/slurm-log/%j-stderr.txt
+#SBATCH -o /home/gmonroe/slurm-log2/%j-stdout.txt
+#SBATCH -e /home/gmonroe/slurm-log2/%j-stderr.txt
 #SBATCH -J test
 #SBATCH -t 24:00:00
 #SBATCH --ntasks=4
