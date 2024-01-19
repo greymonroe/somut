@@ -17,9 +17,8 @@ DIR=$4
 conda activate py2
 STRELKA_INSTALL_PATH=~/strelka-2.9.2.centos6_x86_64
 
-mkdir ${DIR}/3_strelka
-mkdir ${DIR}/3_strelka/${TUMOR}
-mkdir ${DIR}/3_strelka/${TUMOR}/${NORMAL}
+mkdir -p ${DIR}/3_strelka/${TUMOR}/${NORMAL}
+rm -rf ${DIR}/3_strelka/${TUMOR}/${NORMAL}/*
 
 ${STRELKA_INSTALL_PATH}/bin/configureStrelkaSomaticWorkflow.py \
         --normalBam ${DIR}/2_bam/${NORMAL}.fix.markdup.bam \
