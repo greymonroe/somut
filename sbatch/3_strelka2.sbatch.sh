@@ -22,7 +22,7 @@ mkdir -p ${DIR}/3_strelka/${TUMOR}/${NORMAL}
 rm -rf ${DIR}/3_strelka/${TUMOR}/${NORMAL}/*
 
 #${STRELKA_INSTALL_PATH}/bin/configureStrelkaSomaticWorkflow.py \
-$configureStrelkaSomaticWorkflow.py \
+configureStrelkaSomaticWorkflow.py \
         --normalBam ${DIR}/2_bam/${NORMAL}.fix.markdup.bam \
         --tumorBam ${DIR}/2_bam/${TUMOR}.fix.markdup.bam \
         --referenceFasta $REF \
