@@ -23,7 +23,7 @@ rm -rf ./somut
 git clone https://github.com/greymonroe/somut.git
 
 TUMOR=WT_2
-NORMAL=WT_1
+NORMAL=WT_3
 sbatch ./somut/sbatch/3_strelka2.sbatch.sh $TUMOR $NORMAL ~/data/genome/a_thaliana/TAIR10_chr_all.fasta ~/projects/atx_ko
 
 

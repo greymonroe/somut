@@ -6,7 +6,7 @@
 #SBATCH --ntasks=4
 #SBATCH --mem-per-cpu=32G
 #SBATCH --partition=bmh
-#SBATCH --mail-type=FAIL
+#SBATCH --mail-type=ALL
 #SBATCH --mail-user=gmonroe@ucdavis.edu
 
 TUMOR=$1
