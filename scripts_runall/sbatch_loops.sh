@@ -17,6 +17,11 @@ dir_name=$(basename "$dir")
         sbatch ./somut/sbatch/1_trimmomatic.sbatch.sh $dir/${dir_name}_L1_1.fq.gz $dir/${dir_name}_L1_2.fq.gz $dir_name ~/projects/atx_ko
         sbatch ./somut/sbatch/2_bwa.sbatch.sh l $dir_name ~/projects/atx_ko
 
+
+########## Tests
+rm -rf ./somut
+git clone https://github.com/greymonroe/somut.git
+
 TUMOR=WT_2
 NORMAL=WT_1
 sbatch ./somut/sbatch/3_strelka2.sbatch.sh $TUMOR $NORMAL ~/data/genome/a_thaliana/TAIR10_chr_all.fasta ~/projects/atx_ko
@@ -39,6 +44,9 @@ for dir in "$parent_directory"/*; do
         sbatch ./somut/sbatch/1_trimmomatic.sbatch.sh $dir/${dir_name}_L1_1.fq.gz $dir/${dir_name}_L1_2.fq.gz $dir_name ~/projects/atx_ko
     fi
 done
+
+# TRIMMOMATIC
+parent_directory=~/projects/atx_ko/0_raw
 
 # BWA
 for dir in "$parent_directory"/*; do
@@ -71,3 +79,8 @@ fi
 done
 done
 
+TUM
+
+echo ${TUMOR} vs $NORMAL
+#TUMOR=$1 NORMAL=$2 REF=$3 DIR=$4#
+sbatch ./somut/sbatch/3_strelka2.sbatch.sh $TUMOR $NORMAL ~/data/genome/a_thaliana/TAIR10_chr_all.fasta ~/projects/atx_ko

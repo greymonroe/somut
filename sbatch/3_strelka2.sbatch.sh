@@ -14,15 +14,14 @@ NORMAL=$2
 REF=$3
 DIR=$4
 
-module load strelka/2.9.10
-source activate strelka-2.9.10
-configureStrelkaSomaticWorkflow.py
+conda activate py2
+STRELKA_INSTALL_PATH=~/strelka-2.9.2.centos6_x86_64
 
 mkdir ${DIR}/3_strelka
 mkdir ${DIR}/3_strelka/${TUMOR}
 mkdir ${DIR}/3_strelka/${TUMOR}/${NORMAL}
 
-configureStrelkaSomaticWorkflow.py \
+${STRELKA_INSTALL_PATH}/bin/configureStrelkaSomaticWorkflow.py \
         --normalBam ${DIR}/2_bam/${NORMAL}.fix.markdup.bam \
         --tumorBam ${DIR}/2_bam/${TUMOR}.fix.markdup.bam \
         --referenceFasta $REF \
