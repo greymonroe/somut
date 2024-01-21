@@ -23,7 +23,7 @@ rm -rf ./somut
 git clone https://github.com/greymonroe/somut.git
 
 TUMOR=WT_2
-NORMAL=WT_5
+NORMAL=WT_6
 sbatch ./somut/sbatch/3_strelka2.sbatch.sh $TUMOR $NORMAL ~/data/genome/a_thaliana/TAIR10_chr_all.fasta ~/projects/atx_ko
 
 
@@ -65,22 +65,44 @@ done
 
 
 # STRELKA
-TUMORS=$(ls ~/projects/atx_ko/0_raw)
-NORMALS=$(ls ~/projects/atx_ko/0_raw)
+TUMORS=$(ls ~/projects/atx_ko/0_raw | grep -v -e "WT_10" -e "atx12r7_F4_11" -e "atx12r7_F4_10" -e "WT_9")
+NORMALS=$(ls ~/projects/atx_ko/0_raw | grep -v -e "WT_10" -e "atx12r7_F4_11" -e "atx12r7_F4_10" -e "WT_9")
 
 #!/bin/bash
 for TUMOR in $TUMORS; do
 for NORMAL in $NORMALS; do
 if [ "$TUMOR" != "$NORMAL" ]; then
-echo ${TUMOR} vs $NORMAL
 #TUMOR=$1 NORMAL=$2 REF=$3 DIR=$4#
-sbatch ./somut/sbatch/3_strelka2.sbatch.sh $TUMOR $NORMAL ~/data/genome/a_thaliana/TAIR10_chr_all.fasta ~/projects/atx_ko
+FILE="3_strelka/$TUMOR/$NORMAL/results/variants/somatic.snvs.vcf.gz"
+        if [ ! -f "$FILE" ]; then
+            echo ${TUMOR} vs $NORMAL
+            sbatch ./somut/sbatch/3_strelka2.sbatch.sh "$TUMOR" "$NORMAL" ~/data/genome/a_thaliana/TAIR10_chr_all.fasta ~/projects/atx_ko
+        fi
 fi
 done
 done
 
-TUM
+# STRELKA
+TUMORS=$(ls ~/projects/atx_ko/0_raw | grep -v -e "WT_10" -e "atx12r7_F4_11" -e "atx12r7_F4_10" -e "WT_9")
+NORMALS=$(ls ~/projects/atx_ko/0_raw | grep -v -e "WT_10" -e "atx12r7_F4_11" -e "atx12r7_F4_10" -e "WT_9")
 
-echo ${TUMOR} vs $NORMAL
-#TUMOR=$1 NORMAL=$2 REF=$3 DIR=$4#
-sbatch ./somut/sbatch/3_strelka2.sbatch.sh $TUMOR $NORMAL ~/data/genome/a_thaliana/TAIR10_chr_all.fasta ~/projects/atx_ko
+rm -rf 4_strelka_organized
+rm 4_strelka_organized.tar.gz
+
+mkdir -p 4_strelka_organized
+#!/bin/bash
+for TUMOR in $TUMORS; do
+for NORMAL in $NORMALS; do
+if [ "$TUMOR" != "$NORMAL" ]; then
+mkdir -p 4_strelka_organized/$TUMOR/$NORMAL/results/variants
+cp 3_strelka/$TUMOR/$NORMAL/results/variants/somatic.snvs.vcf.gz 4_strelka_organized/$TUMOR/$NORMAL/results/variants
+cp 3_strelka/$TUMOR/$NORMAL/results/variants/somatic.indels.vcf.gz 4_strelka_organized/$TUMOR/$NORMAL/results/variants
+fi
+done
+done
+
+tar -czvf 4_strelka_organized.tar.gz 4_strelka_organized
+
+#local
+scp -r gmonroe@farm.cse.ucdavis.edu:~/projects/atx_ko/4_strelka_organized.tar.gz ~/Documents
+tar -xzvf ~/Documents/4_strelka_organized.tar.gz

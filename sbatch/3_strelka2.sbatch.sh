@@ -26,7 +26,8 @@ configureStrelkaSomaticWorkflow.py \
         --normalBam ${DIR}/2_bam/${NORMAL}.fix.markdup.bam \
         --tumorBam ${DIR}/2_bam/${TUMOR}.fix.markdup.bam \
         --referenceFasta $REF \
-        --runDir ${DIR}/3_strelka/${TUMOR}/${NORMAL}
+        --runDir ${DIR}/3_strelka/${TUMOR}/${NORMAL} \
+        --outputCallableRegions
 
 ${DIR}/3_strelka/${TUMOR}/${NORMAL}/runWorkflow.py -m local -j 16
 
