@@ -6,7 +6,7 @@
 #SBATCH --ntasks=16
 #SBATCH --mem=128G
 #SBATCH --partition=bmh
-#SBATCH --mail-type=ALL
+#SBATCH --mail-type=FAIL
 #SBATCH --mail-user=gmonroe@ucdavis.edu
 
 TUMOR=$1

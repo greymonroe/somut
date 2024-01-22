@@ -82,7 +82,7 @@ fi
 done
 done
 
-# STRELKA
+# STRELKA ORGANIZE
 TUMORS=$(ls ~/projects/atx_ko/0_raw | grep -v -e "WT_10" -e "atx12r7_F4_11" -e "atx12r7_F4_10" -e "WT_9")
 NORMALS=$(ls ~/projects/atx_ko/0_raw | grep -v -e "WT_10" -e "atx12r7_F4_11" -e "atx12r7_F4_10" -e "WT_9")
 
