@@ -97,6 +97,7 @@ if [ "$TUMOR" != "$NORMAL" ]; then
 mkdir -p 4_strelka_organized/$TUMOR/$NORMAL/results/variants
 cp 3_strelka/$TUMOR/$NORMAL/results/variants/somatic.snvs.vcf.gz 4_strelka_organized/$TUMOR/$NORMAL/results/variants
 cp 3_strelka/$TUMOR/$NORMAL/results/variants/somatic.indels.vcf.gz 4_strelka_organized/$TUMOR/$NORMAL/results/variants
+cp 3_strelka/$TUMOR/$NORMAL/results/regions/somatic.callable.regions.bed.gz 4_strelka_organized/$TUMOR/$NORMAL/results/variants
 fi
 done
 done
