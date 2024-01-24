@@ -37,11 +37,12 @@ for dir in "$parent_directory"/*; do
         # Extract only the directory name
         dir_name=$(basename "$dir")
 
+         echo "Processing: $dir"
         echo "Processing: $dir_name"
         
         #READ1=$1, READ2=$2, PREFIX=$3, DIR=$4
-        sbatch ./somut/sbatch/0_fastqc.sbatch.sh $dir/${dir_name}_L1_1.fq.gz 
-        sbatch ./somut/sbatch/0_fastqc.sbatch.sh $dir/${dir_name}_L1_2.fq.gz
+        #sbatch ./somut/sbatch/0_fastqc.sbatch.sh $dir/${dir_name}_L1_1.fq.gz 
+        #sbatch ./somut/sbatch/0_fastqc.sbatch.sh $dir/${dir_name}_L1_2.fq.gz
     fi
 done
 

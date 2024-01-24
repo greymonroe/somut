@@ -11,6 +11,6 @@
 
 READ1=$1
 
-module fastqc 
+module load fastqc 
 
 fastqc $READ1
