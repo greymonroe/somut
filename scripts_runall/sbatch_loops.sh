@@ -27,6 +27,25 @@ NORMAL=WT_6
 sbatch ./somut/sbatch/3_strelka2.sbatch.sh $TUMOR $NORMAL ~/data/genome/a_thaliana/TAIR10_chr_all.fasta ~/projects/atx_ko
 
 
+# FASTQC
+parent_directory=~/projects/atx_ko/0_raw
+
+# Loop over each directory within the parent directory
+for dir in "$parent_directory"/*; do
+    # Check if it's a directory
+    if [ -d "$dir" ]; then
+        # Extract only the directory name
+        dir_name=$(basename "$dir")
+
+        echo "Processing: $dir_name"
+        
+        #READ1=$1, READ2=$2, PREFIX=$3, DIR=$4
+        sbatch ./somut/sbatch/0_fastqc.sbatch.sh $dir/${dir_name}_L1_1.fq.gz 
+        sbatch ./somut/sbatch/0_fastqc.sbatch.sh $dir/${dir_name}_L1_2.fq.gz
+    fi
+done
+
+
 
 # TRIMMOMATIC
 parent_directory=~/projects/atx_ko/0_raw
